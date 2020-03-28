@@ -4,17 +4,21 @@ import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 
 /** The Command for annuler une saisie */
 public class Undo implements Interpreteur {
-    private final Action action;
+    private final ActionSaisie action;
 
-    public Undo(Action arretSuppr) {
+    public Undo(ActionSaisie arretSuppr) {
         this.action = arretSuppr;
     }
 
     @Override // Command
     public void execute() throws EstPileVideException {
-    	action.annuler();
+    	/* enclencher une exception ici */
     }
-
+    
+    @Override 
+    public String execute(String s) {
+    	return action.annuler(s);
+    }
     @Override
 	public <T> void operandes(T d) {
 		/* enclencher une exception ici */

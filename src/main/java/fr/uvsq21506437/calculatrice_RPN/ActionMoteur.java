@@ -8,34 +8,27 @@ import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 
 /** The Receiver class */
-public class Action {
+public class ActionMoteur {
 	private static final int TMAX = 20;
 	private ArrayList<Double> operande ;
 	
 	
-	public Action ( ArrayList<Double> operande) {
+	public ActionMoteur ( ArrayList<Double> operande) {
 		this.operande = operande;
 	}
 	
-    public void annuler()throws EstPileVideException{
-		if (operande.size() != 0) {
-			//System.out.println("l'élément " + operande.get(operande.size()-1) + " a bien été supprimé de la liste ");
-			operande.remove(operande.size()-1);
-			//PB je fais un remove sur la liste d'operandes et non sur les commandes que je suis en train de rentrer
-		}
-		else throw new EstPileVideException();
-    }
-
-    public void arreter() {
-        System.out.println("Fin des opérations. Calculatrice arretée");
-        
-    }
-    
+   
     
 	public void addOp(Double d) throws PilePleineException {
 		if (operande.size() == TMAX)
             throw new PilePleineException();
 		operande.add(d);
+	}
+	public void deleteOp() throws EstPileVideException{
+		if (operande.size() != 0) {
+			operande.remove(operande.size()-1);
+		}
+		else throw new EstPileVideException();
 	}
 	
 	public boolean opBinaire(char symbole) {
@@ -60,8 +53,8 @@ public class Action {
 				res = Operation.DIV.eval(operande.get(operande.size()-1), operande.get(operande.size()-2));
 			}
 			
-			this.annuler();
-			this.annuler();
+			this.deleteOp();
+			this.deleteOp();
 			this.addOp(res);
 		}
 	}

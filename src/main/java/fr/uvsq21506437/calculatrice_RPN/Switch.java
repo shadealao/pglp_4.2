@@ -22,6 +22,14 @@ class Switch {
         	inter.execute();
                
     }
+    public String execute(String commandName, String chaine) throws EstPileVideException {
+    	Interpreteur inter = commandMap.get(commandName);
+        if (inter == null) {
+            throw new IllegalStateException("no command registered for " + commandName);
+        }
+        	return inter.execute(chaine);
+               
+    }
     public <T> void ope(String commandName, T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {

@@ -34,7 +34,7 @@ public class SaisieRPN {
 		do {
 			 saisie = sc.nextLine();
 			 if(saisie.equalsIgnoreCase("undo")) {
-				 moteur.mySwitch.execute("undo"); 
+				 chaine = moteur.mySwitch.execute("undo", chaine); 
 			 }
 			 else  if(!saisie.equalsIgnoreCase("quit")) {
 				 chaine = chaine+ " " + saisie; 

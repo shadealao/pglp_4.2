@@ -8,24 +8,27 @@ import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 
 public class MoteurRPN {
-	Action action ;
+	ActionMoteur action_moteur ;
+	ActionSaisie action_saisie ;
 	Switch mySwitch;
 	private ArrayList<Double> operande ;
+	private String saisie;
 	
 	
 	public MoteurRPN() {
 		mySwitch = new Switch();
 		operande = new ArrayList<Double>();
-		action = new Action(operande);
+		action_moteur = new ActionMoteur(operande);
+		action_saisie = new ActionSaisie();
 	}
 	
 	public void associateNameCmd() {
-		Interpreteur annuler = new Undo(action);
-		Interpreteur arreter = new Quit(action);
-		Interpreteur ajouterOperande = new AddOperande(action);
-		Interpreteur appliquerOperation = new OperationBinaire(action);
-		Interpreteur afficherListeOperande = new AfficherOperandes(action);
-		Interpreteur tailleListeOperande = new GetSizeListOperande(action);
+		Interpreteur annuler = new Undo(action_saisie);
+		Interpreteur arreter = new Quit(action_saisie);
+		Interpreteur ajouterOperande = new AddOperande(action_moteur);
+		Interpreteur appliquerOperation = new OperationBinaire(action_moteur);
+		Interpreteur afficherListeOperande = new AfficherOperandes(action_moteur);
+		Interpreteur tailleListeOperande = new GetSizeListOperande(action_moteur);
 		
 		
 		this.mySwitch.register("undo", annuler);

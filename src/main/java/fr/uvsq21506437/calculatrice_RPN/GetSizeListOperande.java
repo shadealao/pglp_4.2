@@ -5,9 +5,9 @@ import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 public class GetSizeListOperande implements Interpreteur{
-	private final Action action; 
+	private final ActionMoteur action; 
 	
-	public GetSizeListOperande(Action action) {
+	public GetSizeListOperande(ActionMoteur action) {
 		this.action = action;
 	}
 
@@ -16,6 +16,12 @@ public class GetSizeListOperande implements Interpreteur{
 		/* enclencher une exception ici */
 		
 	}
+	
+	@Override 
+    public String execute(String s) {
+    	/* enclencher une exception ici */
+		return null;
+    }
 
 	@Override
 	public <T> void operandes(T d) throws PilePleineException, DivisionZeroException, EstPileVideException {

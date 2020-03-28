@@ -1,9 +1,9 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
 public class AfficherOperandes implements Interpreteur{
-	private final Action action;
+	private final ActionMoteur action;
 	
-	public AfficherOperandes(Action action) {
+	public AfficherOperandes(ActionMoteur action) {
 		this.action = action;
 	}
 
@@ -11,9 +11,13 @@ public class AfficherOperandes implements Interpreteur{
 	public void execute() {
 		action.afficheoperandes();
 		
-		
 	}
-
+	
+	@Override 
+    public String execute(String s) {
+    	/* enclencher une exception ici */
+		return null;
+    }
 	@Override
 	public <T> void operandes(T d) {
 		//action.afficheoperandes();

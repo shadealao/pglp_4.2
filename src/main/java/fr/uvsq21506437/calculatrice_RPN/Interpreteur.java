@@ -7,6 +7,7 @@ import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 /** L'interface Interpreteur  */
 public interface Interpreteur {
 	public  void execute() throws EstPileVideException ;
+	public String execute(String s);
 	public <T> void operandes(T d) throws PilePleineException, DivisionZeroException, EstPileVideException;
 	public int getInt();
 }
