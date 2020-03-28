@@ -21,6 +21,7 @@ public class Action {
 		if (operande.size() != 0) {
 			//System.out.println("l'élément " + operande.get(operande.size()-1) + " a bien été supprimé de la liste ");
 			operande.remove(operande.size()-1);
+			//PB je fais un remove sur la liste d'operandes et non sur les commandes que je suis en train de rentrer
 		}
 		else throw new EstPileVideException();
     }
