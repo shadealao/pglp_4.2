@@ -1,7 +1,5 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
-import java.util.ArrayList;
-
 /** The Command for arreter la saisie */
 public class Quit implements Interpreteur {
     private final Action action;
@@ -18,5 +16,11 @@ public class Quit implements Interpreteur {
 	@Override
 	public <T> void operandes(T d) {
 		/* enclencher une exception ici */
+	}
+	
+	@Override
+	public int getInt() {
+		/* enclencher une exception ici */
+		return 0;
 	}
 }

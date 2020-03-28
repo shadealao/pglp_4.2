@@ -1,7 +1,5 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
-import java.util.ArrayList;
-
 public class AfficherOperandes implements Interpreteur{
 	private final Action action;
 	
@@ -21,6 +19,12 @@ public class AfficherOperandes implements Interpreteur{
 		//action.afficheoperandes();
 		//générer une exception
 		
+	}
+	
+	@Override
+	public int getInt() {
+		/* enclencher une exception ici */
+		return 0;
 	}
 	
 

@@ -19,7 +19,7 @@ public class Action {
 	
     public void annuler()throws EstPileVideException{
 		if (operande.size() != 0) {
-			System.out.println("l'élément " + operande.get(operande.size()-1) + " a bien été supprimé de la liste ");
+			//System.out.println("l'élément " + operande.get(operande.size()-1) + " a bien été supprimé de la liste ");
 			operande.remove(operande.size()-1);
 		}
 		else throw new EstPileVideException();
@@ -27,7 +27,7 @@ public class Action {
 
     public void arreter() {
         System.out.println("Fin des opérations. Calculatrice arretée");
-        return;
+        
     }
     
     
@@ -80,5 +80,9 @@ public class Action {
 			s+= " "+double1 + " "	;
 		}
 		System.out.println(s);
+	}
+	
+	public int getSizeListeOperande() {
+		return this.operande.size();
 	}
 }

@@ -25,6 +25,7 @@ public class MoteurRPN {
 		Interpreteur ajouterOperande = new AddOperande(action);
 		Interpreteur appliquerOperation = new OperationBinaire(action);
 		Interpreteur afficherListeOperande = new AfficherOperandes(action);
+		Interpreteur tailleListeOperande = new GetSizeListOperande(action);
 		
 		
 		this.mySwitch.register("undo", annuler);
@@ -32,10 +33,12 @@ public class MoteurRPN {
 		this.mySwitch.register("add", ajouterOperande);
 		this.mySwitch.register("op", appliquerOperation);
 		this.mySwitch.register("afficher", afficherListeOperande);
+		this.mySwitch.register("get_size_list_operande", tailleListeOperande);
 		
 		
 		
 	}
+	
 	/* pour annuler le dernier élément, arret la saisie et afficher la liste */
 	public void undoStop(String tache) throws EstPileVideException {
 		this.mySwitch.execute(tache);

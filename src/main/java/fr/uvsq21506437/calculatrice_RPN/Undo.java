@@ -1,7 +1,5 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
-import java.util.ArrayList;
-
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 
 /** The Command for annuler une saisie */
@@ -20,5 +18,11 @@ public class Undo implements Interpreteur {
     @Override
 	public <T> void operandes(T d) {
 		/* enclencher une exception ici */
+	}
+    
+    @Override
+	public int getInt() {
+		/* enclencher une exception ici */
+		return 0;
 	}
 }

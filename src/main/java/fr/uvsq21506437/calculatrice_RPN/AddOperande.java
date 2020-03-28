@@ -1,7 +1,5 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
-import java.util.ArrayList;
-
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 public class AddOperande implements Interpreteur {
@@ -11,7 +9,6 @@ public class AddOperande implements Interpreteur {
 	}
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		/* enclencher une exception ici */
 	}
 
@@ -19,6 +16,11 @@ public class AddOperande implements Interpreteur {
 	public <T> void operandes(T d) throws PilePleineException {
 		action.addOp((double)d);
 		
+	}
+	@Override
+	public int getInt() {
+		/* enclencher une exception ici */
+		return 0;
 	}
 
 }

@@ -1,6 +1,5 @@
   package fr.uvsq21506437.calculatrice_RPN;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
@@ -31,6 +30,15 @@ class Switch {
         //vérifier le type double ou char
         inter.operandes(d);
         
+    }
+    
+    public int getInteger(String commandName) {
+    	Interpreteur inter = commandMap.get(commandName);
+        if (inter == null) {
+            throw new IllegalStateException("no command registered for " + commandName);
+        }
+        return inter.getInt();
+    	
     }
     
 }
