@@ -3,11 +3,13 @@ package fr.uvsq21506437.calculatrice_RPN;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
 import fr.uvsq21506437.calculatrice_RPN.exception.ErreurDeSaisieException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 import fr.uvsq21506437.calculatrice_RPN.exception.QteSymbolesException;
+import fr.uvsq21506437.calculatrice_RPN.exception.SaisieVideException;
 
 
 public class SaisieRPN {
@@ -24,7 +26,7 @@ public class SaisieRPN {
 		
 	}
 
-	public void Saisie() throws EstPileVideException {
+	public void Saisie() throws EstPileVideException, SaisieVideException, ActionNonSupporteeException {
 		sc = new Scanner(System.in);
 		String saisie= "";
 		chaine = "";
@@ -50,7 +52,7 @@ public class SaisieRPN {
 		return this.chaine;
 	}
 	
-	public void remplirPiles () throws ErreurDeSaisieException, PilePleineException, DivisionZeroException, EstPileVideException {
+	public void remplirPiles () throws ErreurDeSaisieException, PilePleineException, DivisionZeroException, EstPileVideException, ActionNonSupporteeException {
 		for(int i = 0 ; i<chaine.length() ; i++) {
 			if(chaine.charAt(i)>= 65 && (chaine.charAt(i) != ' ')) {
 				throw new ErreurDeSaisieException();
@@ -70,7 +72,7 @@ public class SaisieRPN {
 		//moteur.mySwitch.execute("afficher");
 	}
 	
-	public void Calculer() throws QteSymbolesException, EstPileVideException, PilePleineException, DivisionZeroException {
+	public void Calculer() throws QteSymbolesException, EstPileVideException, PilePleineException, DivisionZeroException, ActionNonSupporteeException {
 		if(operateur.size() != moteur.mySwitch.getInteger("get_size_list_operande") - 1) {
 	   		throw new QteSymbolesException();
 	   	}

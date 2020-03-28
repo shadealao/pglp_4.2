@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
+import fr.uvsq21506437.calculatrice_RPN.exception.SaisieVideException;
 
 
 /** The Receiver class */
@@ -16,9 +17,11 @@ public class Action {
 	public Action ( ArrayList<Double> operande) {
 		this.operande = operande;
 	}
-	public String annuler(String chaine) {
+	
+	public String annuler(String chaine)throws SaisieVideException {
+		 if(chaine.equals(""))
+			 throw new SaisieVideException();
 		 
-		 //lancer une exception si saisie  vide
 		 String s = "";
 		 // -2 car j'enlève le caractere et l'esoace précédent
 		 for(int i = 0; i < chaine.length()-2; i++ )
@@ -27,9 +30,8 @@ public class Action {
 	}
 	
 	public void arreter() {
-	        System.out.println("Fin de saisie");
-	        
-	    }
+		System.out.println("Fin de saisie");
+	}
 	
    
     
@@ -38,6 +40,7 @@ public class Action {
             throw new PilePleineException();
 		operande.add(d);
 	}
+	
 	public void deleteOp() throws EstPileVideException{
 		if (operande.size() != 0) {
 			operande.remove(operande.size()-1);
@@ -49,8 +52,8 @@ public class Action {
 		if(operande.size()-1<0 || operande.size()-2<0|| (symbole != '+' && symbole != '-' && symbole != '/' && symbole != '*'))
 			return false;
 		return true; 
-		
 	}
+	
 	public void appliquerOp(char symbole) throws DivisionZeroException, EstPileVideException, PilePleineException {
 		if(opBinaire(symbole)) {
 			double res = 0;
@@ -73,15 +76,17 @@ public class Action {
 		}
 	}
 	
-	public ArrayList<Double> retournerListeOperande() {
+	public ArrayList<Double> retournerListeOperande() throws EstPileVideException {
 		ArrayList<Double> List = new ArrayList<>();
+		if(operande.isEmpty())
+				throw new EstPileVideException();
 		int n = operande.size();
 		for (int i = n-1 ; i>= 0; i--) List.add(operande.get(i));
 		for(int i  = 0; i<List.size(); i++) operande.set(i,  List.get(i)) ;
 		return List;
 	}
 	
-	public void afficheoperandes () {
+	public void afficheoperandes() throws EstPileVideException{
 		ArrayList<Double> List = this.retournerListeOperande();
 		String s ="La pile : ";
 		for (Double double1 : List) {
@@ -90,7 +95,8 @@ public class Action {
 		System.out.println(s);
 	}
 	
-	public int getSizeListeOperande() {
+	public int getSizeListeOperande() throws EstPileVideException {
+		if(this.operande.isEmpty()) throw new EstPileVideException();
 		return this.operande.size();
 	}
 }

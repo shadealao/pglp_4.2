@@ -1,12 +1,13 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 import junit.framework.TestCase;
 
 public class MoteurRPNTest extends TestCase{
-	public void testMoteur() throws PilePleineException, DivisionZeroException, EstPileVideException{
+	public void testMoteur() throws PilePleineException, DivisionZeroException, EstPileVideException, ActionNonSupporteeException{
         MoteurRPN M = new MoteurRPN();
         M.associateNameCmd();
         M.mySwitch.ope("add",2.0);

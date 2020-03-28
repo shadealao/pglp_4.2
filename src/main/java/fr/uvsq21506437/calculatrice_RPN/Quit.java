@@ -1,5 +1,7 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
+
 /** The Command for arreter la saisie */
 public class Quit implements Interpreteur {
     private final Action action;
@@ -14,19 +16,17 @@ public class Quit implements Interpreteur {
     }
    
     @Override 
-    public String execute(String s) {
-    	/* enclencher une exception ici */
-		return null;
-    }
+    public String execute(String s)throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
+	}
 
 	@Override
-	public <T> void operandes(T d) {
-		/* enclencher une exception ici */
+	public <T> void operandes(T d) throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
 	
 	@Override
-	public int getInt() {
-		/* enclencher une exception ici */
-		return 0;
+	public int getInt() throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
 }

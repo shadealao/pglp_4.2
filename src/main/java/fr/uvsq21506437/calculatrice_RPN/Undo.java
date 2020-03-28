@@ -1,6 +1,8 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
+import fr.uvsq21506437.calculatrice_RPN.exception.SaisieVideException;
 
 /** The Command for annuler une saisie */
 public class Undo implements Interpreteur {
@@ -11,22 +13,21 @@ public class Undo implements Interpreteur {
     }
 
     @Override // Command
-    public void execute() throws EstPileVideException {
-    	/* enclencher une exception ici */
-    }
+    public void execute()throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
+	}
     
     @Override 
-    public String execute(String s) {
+    public String execute(String s) throws SaisieVideException {
     	return action.annuler(s);
     }
     @Override
-	public <T> void operandes(T d) {
-		/* enclencher une exception ici */
+	public <T> void operandes(T d)throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
     
     @Override
-	public int getInt() {
-		/* enclencher une exception ici */
-		return 0;
-	}
+	public int getInt()throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
+	} 
 }

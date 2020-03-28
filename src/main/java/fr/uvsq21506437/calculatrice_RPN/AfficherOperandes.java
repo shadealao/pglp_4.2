@@ -1,5 +1,8 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
+import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
+
 public class AfficherOperandes implements Interpreteur{
 	private final Action action;
 	
@@ -8,27 +11,25 @@ public class AfficherOperandes implements Interpreteur{
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws EstPileVideException {
 		action.afficheoperandes();
 		
 	}
 	
 	@Override 
-    public String execute(String s) {
-    	/* enclencher une exception ici */
-		return null;
-    }
+    public String execute(String s)throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
+	} 
+	
 	@Override
-	public <T> void operandes(T d) {
+	public <T> void operandes(T d) throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 		//action.afficheoperandes();
-		//générer une exception
-		
 	}
 	
 	@Override
-	public int getInt() {
-		/* enclencher une exception ici */
-		return 0;
+	public int getInt()throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
 	
 

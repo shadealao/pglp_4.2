@@ -1,5 +1,6 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
@@ -12,25 +13,22 @@ public class GetSizeListOperande implements Interpreteur{
 	}
 
 	@Override
-	public void execute() throws EstPileVideException {
-		/* enclencher une exception ici */
-		
+	public void execute() throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
 	
 	@Override 
-    public String execute(String s) {
-    	/* enclencher une exception ici */
-		return null;
-    }
+    public String execute(String s) throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
+	}
 
 	@Override
-	public <T> void operandes(T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
-		//Générer une exception
-		
+	public <T> void operandes(T d) throws ActionNonSupporteeException {
+		throw new ActionNonSupporteeException();
 	}
 	
 	@Override
-	public int getInt() {
+	public int getInt() throws EstPileVideException {
 		return action.getSizeListeOperande();
 	}
 

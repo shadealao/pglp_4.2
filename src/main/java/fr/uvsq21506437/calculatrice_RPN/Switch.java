@@ -2,9 +2,11 @@
 
 import java.util.HashMap;
 
+import fr.uvsq21506437.calculatrice_RPN.exception.ActionNonSupporteeException;
 import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
 import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
+import fr.uvsq21506437.calculatrice_RPN.exception.SaisieVideException;
 
 /** The Invoker class */
 class Switch {
@@ -14,7 +16,7 @@ class Switch {
         commandMap.put(commandName, inter);
     }
     
-    public void execute(String commandName) throws EstPileVideException {
+    public void execute(String commandName) throws EstPileVideException, ActionNonSupporteeException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {
             throw new IllegalStateException("no command registered for " + commandName);
@@ -22,7 +24,7 @@ class Switch {
         	inter.execute();
                
     }
-    public String execute(String commandName, String chaine) throws EstPileVideException {
+    public String execute(String commandName, String chaine) throws EstPileVideException, SaisieVideException, ActionNonSupporteeException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {
             throw new IllegalStateException("no command registered for " + commandName);
@@ -30,7 +32,7 @@ class Switch {
         	return inter.execute(chaine);
                
     }
-    public <T> void ope(String commandName, T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
+    public <T> void ope(String commandName, T d) throws PilePleineException, DivisionZeroException, EstPileVideException, ActionNonSupporteeException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {
             throw new IllegalStateException("no command registered for " + commandName);
@@ -40,7 +42,7 @@ class Switch {
         
     }
     
-    public int getInteger(String commandName) {
+    public int getInteger(String commandName) throws EstPileVideException, ActionNonSupporteeException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {
             throw new IllegalStateException("no command registered for " + commandName);

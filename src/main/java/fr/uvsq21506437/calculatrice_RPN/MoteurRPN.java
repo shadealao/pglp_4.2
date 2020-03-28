@@ -2,17 +2,10 @@ package fr.uvsq21506437.calculatrice_RPN;
 
 import java.util.ArrayList;
 
-import fr.uvsq21506437.calculatrice_RPN.exception.DivisionZeroException;
-import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
-import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
-
-
 public class MoteurRPN {
 	Action action;
 	Switch mySwitch;
 	private ArrayList<Double> operande ;
-	private String saisie;
-	
 	
 	public MoteurRPN() {
 		mySwitch = new Switch();
@@ -40,18 +33,6 @@ public class MoteurRPN {
 		
 	}
 	
-	/* pour annuler le dernier élément, arret la saisie et afficher la liste */
-	public void undoStop(String tache) throws EstPileVideException {
-		this.mySwitch.execute(tache);
-		
-		
-	}
-	
-	/* Pour ajouter une opérande et appliquer une opération sur deux operandes */
-	public <T> void actionSurOperandes(String tache, T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
-		//attention avant d'ajouter supprimer vérifier si liste vide, pleine etc.
-		this.mySwitch.ope(tache, d);
-	}
 	
 
 }
