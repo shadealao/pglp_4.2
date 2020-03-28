@@ -5,9 +5,9 @@ import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 public class GetSizeListOperande implements Interpreteur{
-	private final ActionMoteur action; 
+	private final Action action; 
 	
-	public GetSizeListOperande(ActionMoteur action) {
+	public GetSizeListOperande(Action action) {
 		this.action = action;
 	}
 

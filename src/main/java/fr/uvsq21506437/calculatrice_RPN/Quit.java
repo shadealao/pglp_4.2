@@ -2,9 +2,9 @@ package fr.uvsq21506437.calculatrice_RPN;
 
 /** The Command for arreter la saisie */
 public class Quit implements Interpreteur {
-    private final ActionSaisie action;
+    private final Action action;
 
-    public Quit(ActionSaisie arretSuppr) {
+    public Quit(Action arretSuppr) {
         this.action = arretSuppr;
     }
 

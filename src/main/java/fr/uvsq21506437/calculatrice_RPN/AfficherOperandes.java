@@ -1,9 +1,9 @@
 package fr.uvsq21506437.calculatrice_RPN;
 
 public class AfficherOperandes implements Interpreteur{
-	private final ActionMoteur action;
+	private final Action action;
 	
-	public AfficherOperandes(ActionMoteur action) {
+	public AfficherOperandes(Action action) {
 		this.action = action;
 	}
 

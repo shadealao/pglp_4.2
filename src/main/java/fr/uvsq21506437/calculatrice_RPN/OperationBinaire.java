@@ -5,9 +5,9 @@ import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 public class OperationBinaire implements Interpreteur {
-	private final ActionMoteur action;
+	private final Action action;
 	
-	public OperationBinaire(ActionMoteur action) {
+	public OperationBinaire(Action action) {
 		this.action = action;
 	}
 	

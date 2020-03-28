@@ -4,9 +4,9 @@ import fr.uvsq21506437.calculatrice_RPN.exception.EstPileVideException;
 
 /** The Command for annuler une saisie */
 public class Undo implements Interpreteur {
-    private final ActionSaisie action;
+    private final Action action;
 
-    public Undo(ActionSaisie arretSuppr) {
+    public Undo(Action arretSuppr) {
         this.action = arretSuppr;
     }
 

@@ -8,14 +8,28 @@ import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 
 /** The Receiver class */
-public class ActionMoteur {
+public class Action {
 	private static final int TMAX = 20;
 	private ArrayList<Double> operande ;
 	
 	
-	public ActionMoteur ( ArrayList<Double> operande) {
+	public Action ( ArrayList<Double> operande) {
 		this.operande = operande;
 	}
+	public String annuler(String chaine) {
+		 
+		 //lancer une exception si saisie  vide
+		 String s = "";
+		 // -2 car j'enlève le caractere et l'esoace précédent
+		 for(int i = 0; i < chaine.length()-2; i++ )
+			 s += chaine.charAt(i);
+		 return s;
+	}
+	
+	public void arreter() {
+	        System.out.println("Fin de saisie");
+	        
+	    }
 	
    
     

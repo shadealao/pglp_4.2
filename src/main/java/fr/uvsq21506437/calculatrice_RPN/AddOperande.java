@@ -3,8 +3,8 @@ package fr.uvsq21506437.calculatrice_RPN;
 import fr.uvsq21506437.calculatrice_RPN.exception.PilePleineException;
 
 public class AddOperande implements Interpreteur {
-	private final ActionMoteur action;
-	public  AddOperande(ActionMoteur action) {
+	private final Action action;
+	public  AddOperande(Action action) {
 		this.action = action;
 	}
 	@Override
