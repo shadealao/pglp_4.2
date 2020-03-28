@@ -13,19 +13,19 @@ import fr.uvsq21506437.calculatrice_RPN.exception.QteSymbolesException;
 public class SaisieRPN {
 	public Scanner sc; //scanner
 	private String chaine; //chaine entrée
+	MoteurRPN moteur;
+	ArrayList<Character> operateur ;
 	
-
-
-	public SaisieRPN() throws ErreurDeSaisieException, PilePleineException, DivisionZeroException, EstPileVideException, QteSymbolesException{
+	public SaisieRPN() {
 		super();
-
-		sc = new Scanner(System.in);
-		
-		MoteurRPN moteur = new MoteurRPN();
+		moteur = new MoteurRPN();
 		moteur.associateNameCmd();
+		operateur = new ArrayList<Character>();
 		
-		ArrayList<Character> operateur = new ArrayList<Character>();
-		
+	}
+
+	public void Saisie() throws EstPileVideException {
+		sc = new Scanner(System.in);
 		String saisie= "";
 		chaine = "";
 		System.out.print("Entrez les opérations un à un en appuyant sur la touche entrée. "
@@ -33,19 +33,24 @@ public class SaisieRPN {
 		
 		do {
 			 saisie = sc.nextLine();
-			 if(!saisie.equalsIgnoreCase("quit")) {
-				 chaine = chaine+ " " + saisie; 
+			 if(saisie.equalsIgnoreCase("undo")) {
+				 moteur.mySwitch.execute("undo"); 
 			 }
-			 else if(saisie.equalsIgnoreCase("undo")) {
-				 moteur.mySwitch.execute("annuler"); 
+			 else  if(!saisie.equalsIgnoreCase("quit")) {
+				 chaine = chaine+ " " + saisie; 
 			 }
 			 System.out.println("Saisie courante : "+chaine);
 			 System.out.println("Saisie: '"+saisie+"'");
 		}while(!saisie.equalsIgnoreCase("quit"));
 		
-		//Fin de la saisie
-		moteur.mySwitch.execute("arreter"); 
-		
+		moteur.mySwitch.execute("quit"); 
+	}
+	
+	public String getChaine() {
+		return this.chaine;
+	}
+	
+	public void remplirPiles () throws ErreurDeSaisieException, PilePleineException, DivisionZeroException, EstPileVideException {
 		for(int i = 0 ; i<chaine.length() ; i++) {
 			if(chaine.charAt(i)>= 65 && (chaine.charAt(i) != ' ')) {
 				throw new ErreurDeSaisieException();
@@ -59,14 +64,14 @@ public class SaisieRPN {
 			}
 			else if((chaine.charAt(i) == '+') || (chaine.charAt(i) == '-') || (chaine.charAt(i) == '/') || (chaine.charAt(i) == '*')){
 				operateur.add(chaine.charAt(i));
-				
 			}
-       	
-       	
        }
-	   
-		moteur.mySwitch.execute("afficher");
-	   	if(operateur.size() != moteur.mySwitch.getInteger("get_size_list_operande") - 1) {
+		
+		//moteur.mySwitch.execute("afficher");
+	}
+	
+	public void Calculer() throws QteSymbolesException, EstPileVideException, PilePleineException, DivisionZeroException {
+		if(operateur.size() != moteur.mySwitch.getInteger("get_size_list_operande") - 1) {
 	   		throw new QteSymbolesException();
 	   	}
 	   	else {
@@ -78,14 +83,10 @@ public class SaisieRPN {
 		   	}
 		   	
 		   	moteur.mySwitch.execute("afficher");
-	   		
 	   	}
-	   	
-	   	
-	   
-	   	
-		
 	}
+	
+	
 	
 	
 	
