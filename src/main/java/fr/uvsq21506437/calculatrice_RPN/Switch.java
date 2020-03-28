@@ -23,7 +23,7 @@ class Switch {
         	inter.execute();
                
     }
-    public <T> void ope(String commandName, T d, ArrayList operande) throws PilePleineException, DivisionZeroException, EstPileVideException {
+    public <T> void ope(String commandName, T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
     	Interpreteur inter = commandMap.get(commandName);
         if (inter == null) {
             throw new IllegalStateException("no command registered for " + commandName);

@@ -46,7 +46,7 @@ public class MoteurRPN {
 	/* Pour ajouter une opérande et appliquer une opération sur deux operandes */
 	public <T> void actionSurOperandes(String tache, T d) throws PilePleineException, DivisionZeroException, EstPileVideException {
 		//attention avant d'ajouter supprimer vérifier si liste vide, pleine etc.
-		this.mySwitch.ope(tache, d, this.operande);
+		this.mySwitch.ope(tache, d);
 	}
 	
 

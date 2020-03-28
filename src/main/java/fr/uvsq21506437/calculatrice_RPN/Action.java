@@ -23,7 +23,6 @@ public class Action {
 			operande.remove(operande.size()-1);
 		}
 		else throw new EstPileVideException();
-        System.out.println("l'élément  a bien été supprimé de la liste ");
     }
 
     public void arreter() {
