@@ -14,7 +14,7 @@ public interface Interpreteur {
 	 * @throws EstPileVideException déclenchée si la pile est vide 
 	 * @throws ActionNonSupporteeException  quand une fille de interpreteur ne réalise pas une méthode mère
 	 */
-	public  void execute() throws EstPileVideException, ActionNonSupporteeException;
+	public void execute() throws EstPileVideException, ActionNonSupporteeException;
 	
 	public String execute(String s) throws SaisieVideException, ActionNonSupporteeException;
 	

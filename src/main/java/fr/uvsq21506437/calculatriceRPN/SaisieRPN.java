@@ -39,7 +39,7 @@ public class SaisieRPN {
 	 */
 	public void Saisie() throws EstPileVideException, SaisieVideException, ActionNonSupporteeException {
 		sc = new Scanner(System.in);
-		String saisie= "";
+		String saisie = "";
 		chaine = "";
 		System.out.print("Entrez les opérations un à un en appuyant sur la touche entrée. "
 				+ " \n Pour finir saisissez 'quit' et pour annuler la précédente commande 'undo' ");
@@ -47,7 +47,7 @@ public class SaisieRPN {
 		do {
 			 saisie = sc.nextLine();
 			 if(saisie.equalsIgnoreCase("undo")) {
-				 chaine = moteur.mySwitch.execute("undo", chaine); 
+				 chaine = moteur.mySwitch.execute("undo", chaine);
 			 } else  if(!saisie.equalsIgnoreCase("quit")) {
 				 chaine = chaine+ " " + saisie; 
 			 }
