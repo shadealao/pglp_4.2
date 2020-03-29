@@ -20,19 +20,38 @@ public class MoteurRPNTest extends TestCase{
 		assertTrue(true );
     }
 	
-	public void testUndo() throws PilePleineException, DivisionZeroException, EstPileVideException, ActionNonSupporteeException, SaisieVideException{
-        MoteurRPN M = new MoteurRPN();
-        String chaineavant , chaineapres; 
+	public void testUndo() throws PilePleineException, DivisionZeroException, EstPileVideException, ActionNonSupporteeException, SaisieVideException {
+		MoteurRPN M = new MoteurRPN();
+        String chaine;
         
         M.associateNameCmd();
         M.mySwitch.operande("add",2.0);
         M.mySwitch.operande("add", 3.0);
         M.mySwitch.operation("op", '+');
         M.mySwitch.operation("op", '-');
-        chaineavant = "2.0 3.0 + -";
-        chaineapres = M.mySwitch.execute("undo", chaineavant); 
+        chaine = "2.0 3.0 + -";
+        chaine = M.mySwitch.execute("undo", chaine); 
 		
-		assertEquals(chaineavant, chaineapres);
+		assertEquals("2.0 3.0 +", chaine);
     }
+	
+	/**
+	 * j'essaie d'effectuer une action non interprétée. 
+	 */
+	public void testActionNonInterpretee() {
+		MoteurRPN M = new MoteurRPN();
+        M.associateNameCmd();
+        Throwable caught = null;
+        try {
+			M.mySwitch.operande("ajout",2.0);
+		} catch (IllegalStateException| PilePleineException | DivisionZeroException | EstPileVideException | ActionNonSupporteeException e) {
+			caught = e.fillInStackTrace();
+		}
+		
+        assertNotNull(caught);
+		assertSame(IllegalStateException.class, caught.getClass());
+		
+    }
+	
 
 }

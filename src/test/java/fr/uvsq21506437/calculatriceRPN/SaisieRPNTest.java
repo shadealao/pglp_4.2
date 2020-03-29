@@ -36,8 +36,8 @@ public class SaisieRPNTest extends TestCase{
 		} catch (Throwable t) {
 		   caught = t;
 		}
+		
 		assertNotNull(caught);
 		assertSame(SaisieVideException.class, caught.getClass());
-		
 	}
 }

@@ -15,6 +15,7 @@ public class CaclulatriceRPN {
 	
 	/**
 	 * main du projet.
+	 * @param args argument sur ligne de cmd
 	 * @throws QteSymbolesException il n'y a pas assez ou il y a trop de symboles pour la liste de nbr
 	 * @throws PilePleineException si la pile est pleine
 	 * @throws DivisionZeroException si on divise par 0
@@ -23,7 +24,7 @@ public class CaclulatriceRPN {
 	 * @throws ErreurDeSaisieException si la saisie n'est pas undo quit nbr ou + - / *
 	 * @throws SaisieVideException regarde si j'essaie de faire une action sur la saisie et que celle-ci est vide 
 	 */
-    public static void main() throws EstPileVideException, ErreurDeSaisieException, 
+    public static void main(String[] args) throws EstPileVideException, ErreurDeSaisieException, 
     PilePleineException, DivisionZeroException, QteSymbolesException, SaisieVideException, ActionNonSupporteeException {
     	
     	SaisieRPN saisie = new SaisieRPN();
