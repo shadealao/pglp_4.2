@@ -12,6 +12,24 @@ import fr.uvsq21506437.calculatriceRPN.exception.SaisieVideException;
  * Main de la calculatrice RPN.
  */
 public class CaclulatriceRPN {
+	private static CaclulatriceRPN INSTANCE ;
+	
+	private CaclulatriceRPN() {
+		
+	}
+	
+	public static CaclulatriceRPN getInstance() {
+		if (INSTANCE == null) INSTANCE = new CaclulatriceRPN();
+		return INSTANCE;
+	}
+	
+	public void run(String[] args) throws EstPileVideException, SaisieVideException, ActionNonSupporteeException, ErreurDeSaisieException, PilePleineException, DivisionZeroException, QteSymbolesException {
+		SaisieRPN saisie = new SaisieRPN();
+     
+        saisie.Saisie();
+        saisie.remplirPiles();
+        saisie.Calculer();
+	}
 	
 	/**
 	 * main du projet.
@@ -27,10 +45,7 @@ public class CaclulatriceRPN {
     public static void main(String[] args) throws EstPileVideException, ErreurDeSaisieException, 
     PilePleineException, DivisionZeroException, QteSymbolesException, SaisieVideException, ActionNonSupporteeException {
     	
-    	SaisieRPN saisie = new SaisieRPN();
-        
-        saisie.Saisie();
-        saisie.remplirPiles();
-        saisie.Calculer();
+    	getInstance().run(args);
+    	
     }
 }
